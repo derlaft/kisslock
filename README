@@ -1,0 +1,9 @@
+Perfect screen locker for those who live alone.
+After it run It locks screens, disable monitor power using vbetool and waits for hotkey.
+Hotkey by default: right winkey + left winkey, can be changed in kisslock.h.
+Depending on: vbetool, X11.
+
+Идеальный блокировщик экрана для тех, кто живет один.
+После запуска он блокирует экран и выключает питание монитора при помощи vbetool.
+По нажатии на горячую клавишу (левый win-key + правый win-key, можно изменить в kisslock.h) экран разблокируется.
+Зависимости: vbetool, X11.
