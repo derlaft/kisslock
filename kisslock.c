@@ -21,11 +21,6 @@
 
 int main() {
   
-  if (!system(OFF_STR)) {
-    system(ON_STR); //for the case
-    return 1;
-  }
-  
   Display *display; 
   
   display = XOpenDisplay(NULL);
