@@ -21,6 +21,8 @@
 
 int main() {
   
+  system(OFF_STR);
+  
   Display *display; 
   
   display = XOpenDisplay(NULL);
