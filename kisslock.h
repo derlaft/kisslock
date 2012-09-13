@@ -14,5 +14,5 @@
 
 #define KEY XK_Super_R // Key default: right winkey
 #define MOD Mod4Mask //Mod by default: left winkey
-#define ON_STR "vbetool dmps on"
-#define OFF_STR "vbetool dmps off"
+#define ON_STR "vbetool dpms on"
+#define OFF_STR "vbetool dpms off"
