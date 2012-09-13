@@ -20,12 +20,18 @@
 #include "kisslock.h"
 
 int main() {
+  
+  if (!system(OFF_STR)) {
+    system(ON_STR); //for the case
+    return 1;
+  }
+  
   Display *display; 
   
   display = XOpenDisplay(NULL);
   if (display == NULL) {
     printf("Cant open display\n");
-    return 1;
+    return 2;
   }
   
   XGrabServer(display);
@@ -41,14 +47,13 @@ int main() {
   int shouldQuit = 0;
   XEvent event;
   
-  system("vbetool dpms off");
   while (!shouldQuit) {
     XNextEvent(display, &event);
     switch(event.type) {
       case KeyPress:
         XUngrabKey(display, keyCode, 0, root);
         shouldQuit = 1;
-        system("vbetool dpms on");
+        system(ON_STR);
         break;
     }
   }
