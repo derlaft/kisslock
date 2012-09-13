@@ -37,7 +37,8 @@ int main() {
   int keyCode = XKeysymToKeycode(display, KEY);
 
   Window root = XDefaultRootWindow(display); 
-  XGrabKey(display, keyCode, MOD, root, False, GrabModeAsync, GrabModeAsync);
+  
+  XGrabKeyboard(display, root, False, GrabModeAsync, GrabModeAsync, CurrentTime);
   
   XSelectInput(display, root, KeyPressMask);
   
@@ -48,14 +49,16 @@ int main() {
     XNextEvent(display, &event);
     switch(event.type) {
       case KeyPress:
-        XUngrabKey(display, keyCode, 0, root);
-        shouldQuit = 1;
-        system(ON_STR);
-        break;
+        if (event.xkey.state == MOD && event.xkey.keycode == keyCode) {
+          XUngrabKey(display, keyCode, 0, root);
+          shouldQuit = 1;
+          system(ON_STR);
+          break;
+        }
     }
   }
 
-  XUngrabServer(display);
+  //XUngrabServer(display);
   
   XCloseDisplay(display);
   return 0;
